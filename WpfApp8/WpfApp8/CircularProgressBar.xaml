@@ -1,0 +1,39 @@
+﻿<UserControl
+    x:Class="WpfApp8.CircularProgressBar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="150"
+    d:DesignWidth="150"
+    
+    mc:Ignorable="d">
+    
+    <Grid Name="layot" Height="{Binding RelativeSource={RelativeSource self}, Path=ActualWidth}">
+        <Ellipse
+            Width="{Binding ElementName=layot, Path=Width}"
+            Height="{Binding ElementName=layot, Path=Width}"
+            Stroke="#EEE"
+            StrokeThickness="6" />
+        
+        <!--这个画的是周围一圈-->
+        <Path
+            x:Name="path"
+            Stroke="Orange"
+            StrokeEndLineCap="Round"
+            StrokeStartLineCap="Round"
+            StrokeThickness="4" />
+        
+        
+        <Viewbox Margin="20">
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="Orange">
+                <Run FontSize="20" Text="{Binding Value, RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}}" />
+                <Run Text="%" />
+            </TextBlock>
+        </Viewbox>
+        
+    </Grid>
+</UserControl>
